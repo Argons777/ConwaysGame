@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwayGame.Api", "ConwayGame.Api\ConwayGame.Api.csproj", "{A29A9CAF-9F84-4A4C-BD2C-6DB6729E85B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwayGame.Infrastructure", "ConwayGame.Infrastructure\ConwayGame.Infrastructure.csproj", "{828D83BB-E712-4A2C-8578-15299DFCC1DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A29A9CAF-9F84-4A4C-BD2C-6DB6729E85B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A29A9CAF-9F84-4A4C-BD2C-6DB6729E85B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A29A9CAF-9F84-4A4C-BD2C-6DB6729E85B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A29A9CAF-9F84-4A4C-BD2C-6DB6729E85B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{828D83BB-E712-4A2C-8578-15299DFCC1DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{828D83BB-E712-4A2C-8578-15299DFCC1DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{828D83BB-E712-4A2C-8578-15299DFCC1DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{828D83BB-E712-4A2C-8578-15299DFCC1DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
