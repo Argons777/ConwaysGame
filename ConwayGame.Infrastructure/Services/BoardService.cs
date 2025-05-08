@@ -45,7 +45,7 @@ public class BoardService : IBoardService
         try
         {
             var rows = matrix.Count;
-            var cols = matrix[0].Count;
+            var cols = rows > 0 ? matrix[0].Count : 0;
             if (rows < 3 || cols < 3)
                 return OperationResult<Board>.Failure("The number of rows and cols must be greater than 3");
 
@@ -139,10 +139,9 @@ public class BoardService : IBoardService
             if (statesToGenerate <= 0)
                 return OperationResult<Board?>.Failure(
                     "The number of board states to generate must be greater than zero.");
-            
+
             var board = await _repository.GetByIdAsync(id);
             if (board is null) return OperationResult<Board?>.Failure("Board not found");
-
 
             OperationResult<Board?> result = null;
             while (statesCounter < statesToGenerate)

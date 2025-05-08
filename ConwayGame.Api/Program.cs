@@ -20,7 +20,7 @@ public class Program
             builder.Services.AddDbContext<ConwayDbContext>(options => options.UseSqlite("Data Source=ConwayGame.db"));
             builder.Services.AddScoped<IBoardRepository, BoardRepository>();
             builder.Services.AddScoped<IBoardService, BoardService>();
-            
+
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
             builder.Services.AddControllers();
