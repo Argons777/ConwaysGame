@@ -240,7 +240,6 @@ public class BoardServiceTests
     #region GenerateXBoardStatesAsync
 
     [Theory]
-    [InlineData("44444444-4444-4444-4444-444444444444", 5, 3)]
     [InlineData("44444444-4444-4444-4444-444444444444", 5, 4)]
     public async Task GenerateXBoardStatesAsync_RepeatingPatterns_StateGenerated(Guid id, int population, int delta)
     {

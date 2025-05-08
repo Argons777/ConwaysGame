@@ -26,6 +26,12 @@ public class Program
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+            builder.Services.AddSwaggerGen(config =>
+            {
+                var xmlFile = $"{typeof(Program).Assembly.GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                config.IncludeXmlComments(xmlPath);
+            });
 
             builder.Host.UseSerilog();
 
@@ -35,12 +41,13 @@ public class Program
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

@@ -6,6 +6,14 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DocumentationFile>bin\Debug\ConwayGame.Api.xml</DocumentationFile>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <DocumentationFile>bin\Release\ConwayGame.Api.xml</DocumentationFile>
+    </PropertyGroup>
+
     <ItemGroup>
         <PackageReference Include="AutoMapper" Version="14.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.0"/>
@@ -15,6 +23,7 @@
         </PackageReference>
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.4" />
         <PackageReference Include="Serilog.AspNetCore" Version="9.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.1" />
     </ItemGroup>
 
     <ItemGroup>
