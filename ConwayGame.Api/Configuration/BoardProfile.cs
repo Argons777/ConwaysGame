@@ -4,8 +4,14 @@ using ConwayGame.Infrastructure.Models;
 
 namespace ConwayGame.Api.Configuration;
 
+/// <summary>
+/// Configuration for automapper
+/// </summary>
 public class BoardProfile : Profile
 {
+    /// <summary>
+    /// Constructor
+    /// </summary>
     public BoardProfile()
     {
         CreateMap<Board, BoardDto>()
