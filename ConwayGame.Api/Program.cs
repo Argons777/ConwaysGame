@@ -5,6 +5,7 @@ using ConwayGame.Infrastructure.DataAccess;
 using ConwayGame.Infrastructure.Services;
 using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Serilog;
 
 namespace ConwayGame.Api;
@@ -27,12 +28,19 @@ public class Program
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddDbContext<ConwayDbContext>(options => options.UseSqlite("Data Source=ConwayGame.db"));
             builder.Services.AddScoped<IBoardRepository, BoardRepository>();
             builder.Services.AddScoped<IBoardService, BoardService>();
 
             builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
+            // Database configuration
+            var connectionString = builder.Configuration.GetConnectionString("Postgresql");
+            builder.Services.AddDbContext<ConwayDbContext>(options =>
+            {
+                options.UseNpgsql(connectionString);
+                options.ConfigureWarnings(w => w.Ignore(RelationalEventId.PendingModelChangesWarning));
+            });
+            
             // Versioning configuration
             builder.Services.AddApiVersioning(options =>
             {
@@ -62,6 +70,13 @@ public class Program
             builder.Host.UseSerilog();
 
             var app = builder.Build();
+            
+            // Apply migrations
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ConwayDbContext>();
+                context.Database.Migrate();
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -76,12 +91,6 @@ public class Program
             app.UseAuthorization();
 
             app.MapControllers();
-
-            using (var scope = app.Services.CreateScope())
-            {
-                var context = scope.ServiceProvider.GetRequiredService<ConwayDbContext>();
-                context.Database.Migrate();
-            }
 
             app.Run();
         }

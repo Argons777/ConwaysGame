@@ -1,0 +1,32 @@
+﻿version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: conways-game-dev
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "5000:80"
+      - "5001:443"
+    depends_on:
+      - db
+    volumes:
+      - ./ConwayGame.Api:/app
+
+  db:
+    image: postgres:latest
+    container_name: conways-game-db-dev
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=conwaygame
+    ports:
+      - "5432:5432"
+    volumes:
+      - conways-game-db-dev:/var/lib/postgresql/data
+
+volumes:
+  conways-game-db-dev:

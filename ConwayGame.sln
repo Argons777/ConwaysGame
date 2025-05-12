@@ -6,6 +6,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwayGame.Infrastructure",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwayGame.Tests", "ConwayGame.Tests\ConwayGame.Tests.csproj", "{C469AD52-99FE-4069-8948-815129DB1882}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{A0F6D603-7FB6-4A8E-A8EC-5D3A8AD33C7F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+		.github\workflows\ci-cd.yml = .github\workflows\ci-cd.yml
+		Dockerfile = Dockerfile
+		docker-compose.dev.yml = docker-compose.dev.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
